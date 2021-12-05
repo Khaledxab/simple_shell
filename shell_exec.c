@@ -29,7 +29,7 @@ int shell_execute(char **argv, built_in_t built_in_arr[])
  * @argv: Buffer containing the tokens
  * @path: path to look for exec files
  */
-void _freeall(char **argv, char **path)
+void _freeall(char **argv, char **path);
 {
 	free(argv[0]);
 	free(argv);
