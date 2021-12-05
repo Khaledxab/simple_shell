@@ -1,13 +1,102 @@
 #include "shell.h"
 
 /**
- * main - Entry point of the program.
- * @argc: number of arguments
- * @argv: array of arguments.
- * Return: status code
+ * main - integrates the functions to make the shell work
+ * Return: 0 on success
  */
-int main(int argc, char **argv)
+int main(void)
 {
-	shell_loop();
-	return (EXIT_SUCCESS);
+	char *buff = NULL, **argv = NULL;
+	int flag = 1, err_count = 0;
+	int status = EXIT_SUCCESS;
+
+	built_in_t built_in_arr[] = {
+		{"exit", sh_exit},
+		{"env", _printenv},
+		{"setenv", _setenv},
+		{"unsetenv", _unsetenv},
+		{"cd", _cd},
+		{NULL, NULL}
+	};
+
+
+	(void)signal(SIGINT, sign_handler);
+	(void) built_in_arr;
+
+	while (flag)
+	{
+		puts("$ ");
+
+		err_count++;
+
+		buff = read_input();
+
+		argv = token_buff(buff, " \t\r\n\a");
+
+		status = shell_execute(argv, built_in_arr);
+
+		free(argv);
+		free(buff);
+	}
+	return (status);
+}
+
+/**
+ * token_buff - splits the buffer into tokens
+ * @buff: pointer to the buffer
+ * @delimit: delimitator chosen
+ * Return: double pointer to the tokens
+ **/
+char **token_buff(char *buff, char *delimit)
+{
+	int buffsize = 64, iterator = 0;
+	char **tokens = malloc(sizeof(char *) * buffsize);
+	char *stoken;
+
+	if (tokens == NULL)
+	{
+		perror("Not possible to allocate memory");
+		free(buff);
+		exit(98);
+	}
+	stoken = strtok(buff, delimit);
+	while (stoken != NULL)
+	{
+		tokens[iterator] = stoken;
+		iterator++;
+		stoken = strtok(NULL, delimit);
+	}
+	tokens[iterator] = NULL;
+	return (tokens);
+}
+
+/**
+ * read_input - read input form stdin
+ * Return: pointer to buffer read
+ */
+char *read_input()
+{
+	char *buff = NULL;
+	size_t size = 1024;
+
+	if (getline(&buff, &size, stdin) == EOF)
+	{
+		puts("\n");
+		free(buff);
+		exit(127);
+	}
+	buff[strlen(buff) - 1] = '\0';
+	return (buff);
+}
+
+/**
+ * sign_handler - handles the abscensce of a sign
+ * @sig: integer
+ */
+void sign_handler(int sig)
+{
+	(void) sig;
+	puts("\n");
+	puts("$ ");
+	fflush(stdout);
 }
