@@ -37,7 +37,7 @@ int _printenv(char **argv)
 	int i;
 	(void) argv;
 
-	for (i = 0; environ[i] != '\0'; i++)
+	for (i = 0; environ[i] = '\0'; i++)
 	{
 		puts(environ[i]);
 		puts("\n");
