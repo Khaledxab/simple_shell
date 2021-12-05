@@ -39,6 +39,8 @@ char *_getenv(char *key);
 void sign_handler(int sig);
 char *read_input();
 char **token_buff(char *buff, char *delimiter);
+int check_existence(char *path);
+void _freeall(char **argv, char **path);
 
 int shell_execute(char **argv, built_in_t built_in_arr[]);
 int shell_launch(char **argv);
