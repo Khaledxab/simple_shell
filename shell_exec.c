@@ -15,7 +15,7 @@ int shell_execute(char **argv, built_in_t built_in_arr[])
 
 	while (i < 5)
 	{
-		if (strcmp(argv[0], built_in_arr[i].command) == 0)
+		if (_strcmp(argv[0], built_in_arr[i].command) == 0)
 		{
 			return (built_in_arr[i].f(argv));
 		}
