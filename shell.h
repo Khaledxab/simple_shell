@@ -26,7 +26,6 @@ typedef struct built_in
 
 
 int _cd(char **argv);
-int _help(char **args);
 int sh_exit(char **args);
 int _printenv(char **argv);
 int _setenv(char **argv);
@@ -45,5 +44,19 @@ void _freeall(char **argv, char **path);
 int shell_execute(char **argv, built_in_t built_in_arr[]);
 int shell_launch(char **argv);
 
+char *_strcat(char *str1, char *str2);
+int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
+char *_strdup(char *str);
+int _strlen(char *s);
+char *_strtok(char *s, char *deli);
+char *_strchr(char *s, char b);
+unsigned int _strcspn(char *s, char *pre);
+
+int _atoi(char *s);
+
+
+void _puts(char *s);
+int _putchar(const char c);
 
 #endif
