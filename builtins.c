@@ -21,7 +21,7 @@ int sh_exit(char **argv)
 		if (argv[1][i] < 48 || argv[1][i] > 57)
 			return (3);
 	}
-	status = atoi(argv[1]);
+	status = _atoi(argv[1]);
 	free(argv[0]);
 	free(argv);
 	exit(status);
@@ -46,7 +46,7 @@ int _cd(char **argv)
 		chdir(env);
 		return (0);
 	}
-	if (strcmp(argv[1], comp) == 0)
+	if (_strcmp(argv[1], comp) == 0)
 	{
 		old_pwd = _getenv("OLDPWD");
 		setenv("OLDPWD", getcwd(buff, sizeof(buff)), 1);
