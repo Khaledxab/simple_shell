@@ -12,16 +12,16 @@ char *_getenv(char *name)
 
 	while (environ[i] != NULL)
 	{
-		dup = strdup(environ[i]);
-		token = strtok(environ[i], deli);
-		if (strcmp(token, name) == 0)
+		dup = _strdup(environ[i]);
+		token = _strtok(environ[i], deli);
+		if (_strcmp(token, name) == 0)
 		{
-			token = strtok(NULL, deli);
-			environ[i] = strcpy(environ[i], dup);
+			token = _strtok(NULL, deli);
+			environ[i] = _strcpy(environ[i], dup);
 			free(dup);
 			return (token);
 		}
-		environ[i] = strcpy(environ[i], dup);
+		environ[i] = _strcpy(environ[i], dup);
 		free(dup);
 		i++;
 	}
@@ -37,11 +37,11 @@ int _printenv(char **argv)
 	int i;
 	(void) argv;
 
-	for (i = 0; environ[i] = '\0'; i++)
+	for (i = 0; (environ[i] = '\0'); i++)
 	{
-		puts(environ[i]);
-		puts("\n");
-    }
+		_puts(environ[i]);
+		_puts("\n");
+	}
 	return (0);
 }
 /**
@@ -56,14 +56,14 @@ int _setenv(char **argv)
 
 	while (environ[i])
 	{
-		dup = strdup(environ[i]);
-		tok = strtok(dup, "=");
-		if (!strcmp(tok, argv[1]))
+		dup = _strdup(environ[i]);
+		tok = _strtok(dup, "=");
+		if (!_strcmp(tok, argv[1]))
 		{
-			tok = strcat(argv[1], "=");
-			val = strcat(tok, argv[2]);
+			tok = _strcat(argv[1], "=");
+			val = _strcat(tok, argv[2]);
 
-			environ[i] = strcpy(environ[i], val);
+			environ[i] = _strcpy(environ[i], val);
 			free(tok);
 			free(val);
 			exist = 1;
@@ -94,9 +94,9 @@ int _unsetenv(char **argv)
 
 	while (environ[i])
 	{
-		copy = strdup(environ[i]);
-		tok = strtok(copy, "=");
-		if (!strcmp(tok, argv[1]))
+		copy = _strdup(environ[i]);
+		tok = _strtok(copy, "=");
+		if (!_strcmp(tok, argv[1]))
 		{
 			exist = 1;
 		}
@@ -110,9 +110,9 @@ int _unsetenv(char **argv)
 		new_env = malloc(sizeof(char *) * (len - 1));
 		for (i = 0; i < len; i++)
 		{
-			copy = strdup(environ[i]);
-			tok = strtok(copy, "=");
-			if (!strcmp(tok, argv[1]))
+			copy = _strdup(environ[i]);
+			tok = _strtok(copy, "=");
+			if (!_strcmp(tok, argv[1]))
 			{
 				printf("-------------> Removing: %s\n", environ[i]);
 				continue;
