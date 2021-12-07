@@ -25,7 +25,7 @@ int main(void)
 
 	while (flag)
 	{
-		puts("$ ");
+		_puts("$ ");
 
 		err_count++;
 
@@ -59,12 +59,12 @@ char **token_buff(char *buff, char *delimit)
 		free(buff);
 		exit(98);
 	}
-	stoken = strtok(buff, delimit);
+	stoken = _strtok(buff, delimit);
 	while (stoken != NULL)
 	{
 		tokens[iterator] = stoken;
 		iterator++;
-		stoken = strtok(NULL, delimit);
+		stoken = _strtok(NULL, delimit);
 	}
 	tokens[iterator] = NULL;
 	return (tokens);
@@ -81,7 +81,7 @@ char *read_input()
 
 	if (getline(&buff, &size, stdin) == EOF)
 	{
-		puts("\n");
+		_puts("\n");
 		free(buff);
 		exit(127);
 	}
@@ -96,7 +96,7 @@ char *read_input()
 void sign_handler(int sig)
 {
 	(void) sig;
-	puts("\n");
-	puts("$ ");
+	_puts("\n");
+	_puts("$ ");
 	fflush(stdout);
 }
