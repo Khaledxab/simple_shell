@@ -18,8 +18,8 @@ int shell_launch(char **argv)
 		path = token_buff(env, ":");
 		for (c = 0; path[c]; c++)
 		{
-			command = strcat("/", argv[0]);
-			path_command = strcat(path[c], command);
+			command = _strcat("/", argv[0]);
+			path_command = _strcat(path[c], command);
 			existence = check_existence(path_command);
 			if (existence != -1 && !current_path)
 			{
