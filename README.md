@@ -13,6 +13,7 @@ As an example you can use the <b>ls</b> command for listing files in the current
 $ ls
 AUTHORS    _atoi.c     _string.c  builtins.c  hsh     man_1_simple_shell  shell_exec.c    test
 README.md  _printer.c  _strtok.c  env.c       main.c  shell.h             shell_launch.c  test2
+```
 
 # Manual
 We provided a man page in the repository, it can be run like this:
