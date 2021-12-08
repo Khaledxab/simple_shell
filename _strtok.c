@@ -54,6 +54,7 @@ char *_strchr(char *s, char b)
  * @pre: prefix string
  * Return: number of bytes in the initial seg of s
  */
+unsigned int _strcspn(char *s, char *pre)
 {
 	unsigned int len = 0, i = 0;
 
