@@ -38,6 +38,7 @@ DESCRIPTION
 
 INVOCATION
        In order to invoke this shell it is necessary to run the ./hsh command.
+```
 # Authors
 * Ghassen Boughammoura <github.com/Ghassen-bgh>
 * Khaled Ben Abderrahmen <github.com/Khaledxab>
