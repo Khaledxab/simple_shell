@@ -2,7 +2,6 @@
 #define _SHELL_H_
 
 extern char **environ;
-extern char *program_invocation_name;
 
 #include <sys/wait.h>
 #include <unistd.h>
@@ -43,6 +42,7 @@ void _freeall(char **argv, char **path);
 
 int shell_execute(char **argv, built_in_t built_in_arr[]);
 int shell_launch(char **argv);
+
 
 char *_strcat(char *str1, char *str2);
 int _strcmp(char *s1, char *s2);
